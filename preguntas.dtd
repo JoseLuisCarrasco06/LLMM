@@ -1,0 +1,12 @@
+<!ELEMENT test (question+)>
+<!ELEMENT question (wording, choices)>
+<!ATTLIST question
+    id ID #REQUIRED
+    lang (es|en) #REQUIRED
+>
+<!ELEMENT wording (#PCDATA)>
+<!ELEMENT choices (choice+)>
+<!ELEMENT choice (#PCDATA)>
+<!ATTLIST choice
+    correct (yes) #IMPLIED
+>

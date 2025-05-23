@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE test SYSTEM "preguntas.dtd">
+<test>
+  <!-- Preguntas en Español -->
+  <question id="1" lang="es">
+    <wording>¿Qué significa XML?</wording>
+    <choices>
+      <choice correct="yes">Lenguaje de Marcado Extensible</choice>
+      <choice>Lenguaje de Programación</choice>
+      <choice>Ejemplo de Lenguaje</choice>
+      <choice>Lenguaje de Diseño</choice>
+    </choices>
+  </question>
+  <question id="2" lang="es">
+    <wording>¿Cuál es el propósito de un DTD?</wording>
+    <choices>
+      <choice correct="yes">Definir la estructura de un documento XML</choice>
+      <choice>Programar en XML</choice>
+      <choice>Convertir XML a HTML</choice>
+      <choice>Crear bases de datos</choice>
+    </choices>
+  </question>
+  <question id="3" lang="es">
+    <wording>¿Qué etiqueta define la lista de opciones?</wording>
+    <choices>
+      <choice>test</choice>
+      <choice>question</choice>
+      <choice correct="yes">choices</choice>
+      <choice>choice</choice>
+    </choices>
+  </question>
+  <question id="4" lang="es">
+    <wording>¿Cuál de estas es una ventaja de XML?</wording>
+    <choices>
+      <choice correct="yes">Es legible tanto para humanos como para máquinas</choice>
+      <choice>No requiere estructura</choice>
+      <choice>Solo funciona con navegadores</choice>
+      <choice>Solo puede usarse en servidores</choice>
+    </choices>
+  </question>
+  <question id="5" lang="es">
+    <wording>¿Qué significa DTD?</wording>
+    <choices>
+      <choice>Data Type Definition</choice>
+      <choice correct="yes">Definición de Tipo de Documento</choice>
+      <choice>Documento Técnico Detallado</choice>
+      <choice>Documento de Texto Digital</choice>
+    </choices>
+  </question>
+  <question id="6" lang="es">
+    <wording>¿Qué elemento se usa para abrir una etiqueta en XML?</wording>
+    <choices>
+      <choice correct="yes">Etiqueta de apertura</choice>
+      <choice>Etiqueta de cierre</choice>
+      <choice>Etiqueta vacía</choice>
+      <choice>Etiqueta compuesta</choice>
+    </choices>
+  </question>
+  <question id="7" lang="es">
+    <wording>¿Cuál es el símbolo para cerrar una etiqueta en XML?</wording>
+    <choices>
+      <choice>!</choice>
+      <choice>/</choice>
+      <choice correct="yes">/</choice>
+      <choice>&lt;</choice>
+    </choices>
+  </question>
+  <question id="8" lang="es">
+    <wording>¿Qué hace un atributo en XML?</wording>
+    <choices>
+      <choice>Define un nuevo elemento</choice>
+      <choice correct="yes">Proporciona información adicional sobre un elemento</choice>
+      <choice>Inicia un documento XML</choice>
+      <choice>Cierra una etiqueta</choice>
+    </choices>
+  </question>
+  <question id="9" lang="es">
+    <wording>¿Cómo se llama la parte inicial de un documento XML?</wording>
+    <choices>
+      <choice>Etiqueta raíz</choice>
+      <choice correct="yes">Declaración XML</choice>
+      <choice>DTD</choice>
+      <choice>Encabezado</choice>
+    </choices>
+  </question>
+  <question id="10" lang="es">
+    <wording>¿Qué es una etiqueta raíz?</wording>
+    <choices>
+      <choice>Una etiqueta dentro de otra</choice>
+      <choice correct="yes">El elemento principal que contiene todo el contenido XML</choice>
+      <choice>Una etiqueta vacía</choice>
+      <choice>Una etiqueta de comentario</choice>
+    </choices>
+  </question>
+  <question id="11" lang="es">
+    <wording>¿Qué formato debe tener un documento XML?</wording>
+    <choices>
+      <choice>Libre</choice>
+      <choice>Solo texto</choice>
+      <choice correct="yes">Bien formado y válido según el DTD</choice>
+      <choice>Solo HTML</choice>
+    </choices>
+  </question>
+  <question id="12" lang="es">
+    <wording>¿Qué es un comentario en XML?</wording>
+    <choices>
+      <choice>Texto visible</choice>
+      <choice correct="yes">Texto que no se procesa y va entre &lt;!-- y --&gt;</choice>
+      <choice>Etiqueta de cierre</choice>
+      <choice>Etiqueta raíz</choice>
+    </choices>
+  </question>
+  <question id="13" lang="es">
+    <wording>¿Cuál es la extensión habitual de un archivo XML?</wording>
+    <choices>
+      <choice>.html</choice>
+      <choice>.txt</choice>
+      <choice correct="yes">.xml</choice>
+      <choice>.json</choice>
+    </choices>
+  </question>
+  <question id="14" lang="es">
+    <wording>¿Qué es un nodo en XML?</wording>
+    <choices>
+      <choice>Una línea de texto</choice>
+      <choice>Un atributo</choice>
+      <choice correct="yes">Un componente del árbol XML como un elemento o atributo</choice>
+      <choice>Un archivo</choice>
+    </choices>
+  </question>
+  <question id="15" lang="es">
+    <wording>¿Cuál es la diferencia entre XML y HTML?</wording>
+    <choices>
+      <choice>XML es un lenguaje de presentación</choice>
+      <choice>HTML define datos</choice>
+      <choice correct="yes">XML define datos, HTML define presentación</choice>
+      <choice>XML no es legible por humanos</choice>
+    </choices>
+  </question>
+  <question id="16" lang="es">
+    <wording>¿Qué significa que XML sea extensible?</wording>
+    <choices>
+      <choice>Que tiene muchas funciones</choice>
+      <choice>Que usa etiquetas predefinidas</choice>
+      <choice correct="yes">Que puedes crear tus propias etiquetas</choice>
+      <choice>No tiene significado</choice>
+    </choices>
+  </question>
+  <question id="17" lang="es">
+    <wording>¿Cuál de estos es un parser XML?</wording>
+    <choices>
+      <choice>Google Chrome</choice>
+      <choice>Microsoft Word</choice>
+      <choice correct="yes">SAX y DOM</choice>
+      <choice>Excel</choice>
+    </choices>
+  </question>
+  <question id="18" lang="es">
+    <wording>¿Para qué sirve XPath?</wording>
+    <choices>
+      <choice>Crear páginas web</choice>
+      <choice correct="yes">Navegar y seleccionar partes de un documento XML</choice>
+      <choice>Convertir XML a PDF</choice>
+      <choice>Guardar XML en base de datos</choice>
+    </choices>
+  </question>
+  <question id="19" lang="es">
+    <wording>¿Qué indica el atributo correct="yes" en las preguntas?</wording>
+    <choices>
+      <choice>Que la opción no es correcta</choice>
+      <choice correct="yes">Que esa es la respuesta correcta</choice>
+      <choice>Que es una pregunta</choice>
+      <choice>Que está deshabilitada</choice>
+    </choices>
+  </question>
+  <question id="20" lang="es">
+    <wording>¿Cuál es la función de un DTD?</wording>
+    <choices>
+      <choice>Crear gráficos</choice>
+      <choice>Editar imágenes</choice>
+      <choice correct="yes">Definir las reglas para la estructura del XML</choice>
+      <choice>Programar</choice>
+    </choices>
+  </question>
+
+  <!-- Preguntas en Inglés -->
+  <question id="21" lang="en">
+    <wording>What does XML stand for?</wording>
+    <choices>
+      <choice correct="yes">eXtensible Markup Language</choice>
+      <choice>Programming Language</choice>
+      <choice>Example Language</choice>
+      <choice>Design Language</choice>
+    </choices>
+  </question>
+  <question id="22" lang="en">
+    <wording>What is the purpose of a DTD?</wording>
+    <choices>
+      <choice correct="yes">Define the structure of an XML document</choice>
+      <choice>Program in XML</choice>
+      <choice>Convert XML to HTML</choice>
+      <choice>Create databases</choice>
+    </choices>
+  </question>
+  <question id="23" lang="en">
+    <wording>Which tag defines the list of options?</wording>
+    <choices>
+      <choice>test</choice>
+      <choice>question</choice>
+      <choice correct="yes">choices</choice>
+      <choice>choice</choice>
+    </choices>
+  </question>
+  <question id="24" lang="en">
+    <wording>What is an advantage of XML?</wording>
+    <choices>
+      <choice correct="yes">It is readable by both humans and machines</choice>
+      <choice>Requires no structure</choice>
+      <choice>Only works with browsers</choice>
+      <choice>Only used on servers</choice>
+    </choices>
+  </question>
+  <question id="25" lang="en">
+    <wording>What does DTD stand for?</wording>
+    <choices>
+      <choice>Data Type Definition</choice>
+      <choice correct="yes">Document Type Definition</choice>
+      <choice>Technical Document Description</choice>
+      <choice>Digital Text Document</choice>
+    </choices>
+  </question>
+  <question id="26" lang="en">
+    <wording>Which element is used to open a tag in XML?</wording>
+    <choices>
+      <choice correct="yes">Opening tag</choice>
+      <choice>Closing tag</choice>
+      <choice>Empty tag</choice>
+      <choice>Composite tag</choice>
+    </choices>
+  </question>
+  <question id="27" lang="en">
+    <wording>Which symbol is used to close a tag in XML?</wording>
+    <choices>
+      <choice>!</choice>
+      <choice>/</choice>
+      <choice correct="yes">/</choice>
+      <choice>&lt;</choice>
+    </choices>
+  </question>
+  <question id="28" lang="en">
+    <wording>What does an attribute do in XML?</wording>
+    <choices>
+      <choice>Defines a new element</choice>
+      <choice correct="yes">Provides additional information about an element</choice>
+      <choice>Starts an XML document</choice>
+      <choice>Closes a tag</choice>
+    </choices>
+  </question>
+  <question id="29" lang="en">
+    <wording>What is the beginning of an XML document called?</wording>
+    <choices>
+      <choice>Root tag</choice>
+      <choice correct="yes">XML declaration</choice>
+      <choice>DTD</choice>
+      <choice>Header</choice>
+    </choices>
+  </question>
+  <question id="30" lang="en">
+    <wording>What is a root tag?</wording>
+    <choices>
+      <choice>A tag inside another</choice>
+      <choice correct="yes">The main element that contains all XML content</choice>
+      <choice>An empty tag</choice>
+      <choice>A comment tag</choice>
+    </choices>
+  </question>
+  <question id="31" lang="en">
+    <wording>What format should an XML document have?</wording>
+    <choices>
+      <choice>Free</choice>
+      <choice>Text only</choice>
+      <choice correct="yes">Well-formed and valid according to the DTD</choice>
+      <choice>HTML only</choice>
+    </choices>
+  </question>
+  <question id="32" lang="en">
+    <wording>What is a comment in XML?</wording>
+    <choices>
+      <choice>Visible text</choice>
+      <choice correct="yes">Text that is not processed and is between &lt;!-- and --&gt;</choice>
+      <choice>Closing tag</choice>
+      <choice>Root tag</choice>
+    </choices>
+  </question>
+  <question id="33" lang="en">
+    <wording>What is the usual file extension of an XML file?</wording>
+    <choices>
+      <choice>.html</choice>
+      <choice>.txt</choice>
+      <choice correct="yes">.xml</choice>
+      <choice>.json</choice>
+    </choices>
+  </question>
+  <question id="34" lang="en">
+    <wording>What is a node in XML?</wording>
+    <choices>
+      <choice>A line of text</choice>
+      <choice>An attribute</choice>
+      <choice correct="yes">A component of the XML tree such as an element or attribute</choice>
+      <choice>A file</choice>
+    </choices>
+  </question>
+  <question id="35" lang="en">
+    <wording>What is the difference between XML and HTML?</wording>
+    <choices>
+      <choice>XML is a presentation language</choice>
+      <choice>HTML defines data</choice>
+      <choice correct="yes">XML defines data, HTML defines presentation</choice>
+      <choice>XML is not human-readable</choice>
+    </choices>
+  </question>
+  <question id="36" lang="en">
+    <wording>What does it mean that XML is extensible?</wording>
+    <choices>
+      <choice>It has many functions</choice>
+      <choice>Uses predefined tags</choice>
+      <choice correct="yes">You can create your own tags</choice>
+      <choice>It has no meaning</choice>
+    </choices>
+  </question>
+  <question id="37" lang="en">
+    <wording>Which of these is an XML parser?</wording>
+    <choices>
+      <choice>Google Chrome</choice>
+      <choice>Microsoft Word</choice>
+      <choice correct="yes">SAX and DOM</choice>
+      <choice>Excel</choice>
+    </choices>
+  </question>
+  <question id="38" lang="en">
+    <wording>What is XPath used for?</wording>
+    <choices>
+      <choice>Create web pages</choice>
+      <choice correct="yes">Navigate and select parts of an XML document</choice>
+      <choice>Convert XML to PDF</choice>
+      <choice>Store XML in databases</choice>
+    </choices>
+  </question>
+  <question id="39" lang="en">
+    <wording>What does the attribute correct="yes" mean?</wording>
+    <choices>
+      <choice>It means the option is wrong</choice>
+      <choice correct="yes">It means that is the correct answer</choice>
+      <choice>It means a question</choice>
+      <choice>It means disabled</choice>
+    </choices>
+  </question>
+  <question id="40" lang="en">
+    <wording>What is the function of a DTD?</wording>
+    <choices>
+      <choice>Create graphics</choice>
+      <choice>Edit images</choice>
+      <choice correct="yes">Define rules for the structure of the XML</choice>
+      <choice>Program</choice>
+    </choices>
+  </question>
+</test>

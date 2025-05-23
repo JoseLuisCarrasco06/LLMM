@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cuestionario Bilingüe XML</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <h1>Cuestionario Bilingüe XML</h1>
+
+  <label for="idioma">Selecciona idioma: </label>
+  <select id="idioma" onchange="cambiarIdioma()">
+    <option value="es">Español</option>
+    <option value="en">English</option>
+  </select>
+
+  <div id="pregunta" class="pregunta"></div>
+  <div id="respuestas" class="respuestas"></div>
+  <div id="puntuacion" class="puntuacion">Puntuación: 0</div>
+
+  <button id="btnSiguiente" onclick="siguientePregunta()" disabled>Siguiente</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
