@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Ejemplo con fetch - XML local</h2>
+<p id="demo"></p>
+
+<script>
+fetch('cd_catalog.xml')
+  .then(response => response.text())
+  .then(data => {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(data, "application/xml");
+    const cds = xmlDoc.getElementsByTagName("CD");
+    let txt = "";
+
+    for (let i = 0; i < cds.length; i++) {
+      let title = cds[i].getElementsByTagName("TITLE")[0].textContent;
+      let artist = cds[i].getElementsByTagName("ARTIST")[0].textContent;
+      let price = cds[i].getElementsByTagName("PRICE")[0].textContent;
+
+      txt += `${title} - (${artist}) ${price}€<br>`;
+    }
+
+    document.getElementById("demo").innerHTML = txt;
+  })
+  .catch(error => {
+    document.getElementById("demo").textContent = "Error cargando XML: " + error;
+  });
+</script>
+</body>
+</html>

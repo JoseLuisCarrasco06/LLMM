@@ -1,71 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Manipulación XML con JavaScript</title>
-</head>
+<html>
 <body>
-  <h1>Prueba de lectura XML desde archivo</h1>
-  <pre id="output"></pre>
+<h2>Ejemplo con XMLHttpRequest - XML remoto</h2>
+<p id="demo"></p>
 
-  <script>
-    fetch('books.xml')
-      .then(response => response.text())
-      .then(data => {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(data, "application/xml");
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const xmlDoc = this.responseXML;
+  const cds = xmlDoc.getElementsByTagName("CD");
+  let txt = "";
 
-        const output = document.getElementById('output');
+  for (let i = 0; i < cds.length; i++) {
+    let title = cds[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+    let artist = cds[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+    let price = cds[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue;
 
-        // Ejemplo: título del primer libro
-        let firstTitle = xmlDoc.getElementsByTagName("title")[0].textContent;
-        output.textContent += `Título del primer libro: ${firstTitle}\n`;
+    txt += `${title} - (${artist}) ${price}€<br>`;
+  }
 
-        // Ejemplo: año (publish_date) del primer libro
-        let firstYear = xmlDoc.getElementsByTagName("publish_date")[0].textContent;
-        output.textContent += `Fecha de publicación primer libro: ${firstYear}\n`;
+  document.getElementById("demo").innerHTML = txt;
+}
 
-        // Precio del segundo libro
-        let secondPrice = xmlDoc.getElementsByTagName("price")[1].textContent;
-        output.textContent += `Precio del segundo libro: ${secondPrice}\n`;
-
-        // Autor del primer libro
-        let firstAuthor = xmlDoc.getElementsByTagName("author")[0].textContent;
-        output.textContent += `Autor del primer libro: ${firstAuthor}\n`;
-
-        // Primer autor del tercer libro
-        let firstAuthorThirdBook = xmlDoc.getElementsByTagName("book")[2].getElementsByTagName('author')[0].textContent;
-        output.textContent += `Primer autor del tercer libro: ${firstAuthorThirdBook}\n`;
-
-        // Segundo autor del tercer libro
-        let secondAuthorThirdBook = xmlDoc.getElementsByTagName("book")[2].getElementsByTagName('author')[1].textContent;
-        output.textContent += `Segundo autor del tercer libro: ${secondAuthorThirdBook}\n`;
-
-        // Número de autores del tercer libro
-        let numAuthorsThirdBook = xmlDoc.getElementsByTagName("book")[2].getElementsByTagName('author').length;
-        output.textContent += `Número de autores del tercer libro: ${numAuthorsThirdBook}\n`;
-
-        // Mostrar todos los autores del tercer libro
-        output.textContent += `Autores del tercer libro:\n`;
-        let authorsThirdBook = xmlDoc.getElementsByTagName("book")[2].getElementsByTagName('author');
-        for(let i = 0; i < numAuthorsThirdBook; i++) {
-          output.textContent += ` - ${authorsThirdBook[i].textContent}\n`;
-        }
-
-        // Número de atributos del cuarto libro
-        let numAttributesFourthBook = xmlDoc.getElementsByTagName("book")[3].attributes.length;
-        output.textContent += `Número de atributos del cuarto libro: ${numAttributesFourthBook}\n`;
-
-        // Valores de los atributos del cuarto libro
-        output.textContent += `Valores de los atributos del cuarto libro:\n`;
-        let attrsFourthBook = xmlDoc.getElementsByTagName("book")[3].attributes;
-        for(let i = 0; i < numAttributesFourthBook; i++) {
-          output.textContent += ` - ${attrsFourthBook[i].name} = ${attrsFourthBook[i].value}\n`;
-        }
-      })
-      .catch(error => {
-        console.error("Error al cargar el XML:", error);
-      });
-  </script>
+xhttp.open("GET", "https://www.w3schools.com/js/cd_catalog.xml");
+xhttp.send();
+</script>
 </body>
 </html>
