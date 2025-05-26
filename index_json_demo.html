@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Ejercicio JSON Demo</title>
+<style>
+  table { border-collapse: collapse; width: 50%; margin-top: 20px;}
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { background-color: #f2f2f2; }
+</style>
+</head>
+<body>
+
+<h2>Ejercicio JSON Demo</h2>
+
+<div id="demo"></div>
+
+<script>
+const xhttp = new XMLHttpRequest();
+
+xhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+
+  let txt = "";
+
+  // Muestra edad
+  txt += "<p><strong>Edad:</strong> " + myObj.age + "</p>";
+
+  // Muestra del primer elemento pets, tipo de animal
+  txt += "<p><strong>Tipo del primer animal:</strong> " + myObj.pets[0].type + "</p>";
+
+  // Muestra del primer elemento pets, nombre
+  txt += "<p><strong>Nombre del primer animal:</strong> " + myObj.pets[0].name + "</p>";
+
+  // Muestra el número de mascotas (pets)
+  txt += "<p><strong>Número de mascotas:</strong> " + myObj.pets.length + "</p>";
+
+  // Muestra el nombre de todas las mascotas
+  txt += "<p><strong>Nombres de todas las mascotas:</strong><br>";
+  for(let i = 0; i < myObj.pets.length; i++) {
+    txt += myObj.pets[i].name + "<br>";
+  }
+  txt += "</p>";
+
+  // Muestra todos los datos en un párrafo (JSON stringificado)
+  txt += "<p><strong>Todos los datos (JSON):</strong> " + JSON.stringify(myObj) + "</p>";
+
+  // Muestra los datos usando una tabla
+  txt += "<table>";
+  txt += "<tr><th>Nombre</th><th>Edad</th><th>Ciudad</th></tr>";
+  txt += "<tr><td>" + myObj.name + "</td><td>" + myObj.age + "</td><td>" + myObj.city + "</td></tr>";
+  txt += "</table>";
+
+  txt += "<h3>Lista de mascotas</h3>";
+  txt += "<table>";
+  txt += "<tr><th>Nombre Mascota</th><th>Tipo</th></tr>";
+  for(let i = 0; i < myObj.pets.length; i++) {
+    txt += "<tr><td>" + myObj.pets[i].name + "</td><td>" + myObj.pets[i].type + "</td></tr>";
+  }
+  txt += "</table>";
+
+  document.getElementById("demo").innerHTML = txt;
+};
+
+xhttp.open("GET", "json_demo.txt", true);
+xhttp.send();
+</script>
+
+</body>
+</html>
