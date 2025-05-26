@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Ejercicio 3 - Lectura XML libros</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Datos de libros desde XML</h2>
+
+<p><strong>Título del primer libro:</strong> <span id="primerTitulo"></span></p>
+<p><strong>Todos los títulos:</strong></p>
+<ul id="todosTitulos"></ul>
+<p><strong>Número de atributos del cuarto libro:</strong> <span id="numAtributos"></span></p>
+<p><strong>Valor de los atributos del cuarto libro:</strong></p>
+<ul id="valoresAtributos"></ul>
+<p><strong>Número de autores del tercer libro:</strong> <span id="numAutores"></span></p>
+<p><strong>Autores del tercer libro:</strong></p>
+<ul id="autoresTercerLibro"></ul>
+
+<h3>Tabla: Título, primer autor, precio y año</h3>
+<table id="tablaLibros">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Primer autor</th>
+      <th>Precio</th>
+      <th>Año</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const xmlDoc = this.responseXML;
+    const libros = xmlDoc.getElementsByTagName("book");
+
+    // Título del primer libro
+    const primerTitulo = libros[0].getElementsByTagName("title")[0].textContent;
+    document.getElementById("primerTitulo").textContent = primerTitulo;
+
+    // Todos los títulos
+    let ulTitulos = document.getElementById("todosTitulos");
+    for(let i = 0; i < libros.length; i++) {
+      let li = document.createElement(
