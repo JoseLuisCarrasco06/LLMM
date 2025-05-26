@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Ejercicio 1 - CD Catalog con divs</title>
+<style>
+  /* Estilos para tabla con divs */
+  .table { display: table; border-collapse: collapse; width: 100%; max-width: 600px; margin: 20px auto; }
+  .row { display: table-row; }
+  .cell, .header { display: table-cell; border: 1px solid #999; padding: 8px; }
+  .header { font-weight: bold; background-color: #f2f2f2; }
+</style>
+</head>
+<body>
+
+<h2>Catálogo de CDs (con divs)</h2>
+
+<div id="cdTable" class="table">
+  <div class="row">
+    <div class="header">País</div>
+    <div class="header">Compañía</div>
+    <div class="header">Precio</div>
+    <div class="header">Año</div>
+  </div>
+</div>
+
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const xmlDoc = this.responseXML;
+  const cds = xmlDoc.getElementsByTagName("CD");
+  const table = document.getElementById("cdTable");
+
+  for (let i = 0; i < cds.length; i++) {
+    let country = cds[i].getElementsByTagName("COUNTRY")[0].textContent;
+    let company = cds[i].getElementsByTagName("COMPANY")[0].textContent;
+    let price = cds[i].getElementsByTagName("PRICE")[0].textContent;
+    let year = cds[i].getElementsByTagName("YEAR")[0].textContent;
+
+    // Crear fila
+    let row = document.createElement("div");
+    row.className = "row";
+
+    // Crear celdas con datos
+    let cellCountry = document.createElement("div");
+    cellCountry.className = "cell";
+    cellCountry.textContent = country;
+    row.appendChild(cellCountry);
+
+    let cellCompany = document.createElement("div");
+    cellCompany.className = "cell";
+    cellCompany.textContent = company;
+    row.appendChild(cellCompany);
+
+    let cellPrice = document.createElement("div");
+    cellPrice.className = "cell";
+    cellPrice.textContent = price + " €";
+    row.appendChild(cellPrice);
+
+    let cellYear = document.createElement("div");
+    cellYear.className = "cell";
+    cellYear.textContent = year;
+    row.appendChild(cellYear);
+
+    // Añadir fila a la tabla
+    table.appendChild(row);
+  }
+};
+xhttp.open("GET", "cd_catalog.xml");
+xhttp.send();
+</script>
+
+</body>
+</html>
