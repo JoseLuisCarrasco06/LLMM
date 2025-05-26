@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<letter>
+  <sender>
+    <name>Juan Pérez</name>
+    <address>Calle Falsa 123, Madrid, España</address>
+    <email>juan.perez@email.com</email>
+  </sender>
+  <receiver>
+    <name>María López</name>
+    <address>Avenida Siempre Viva 456, Barcelona, España</address>
+    <email>maria.lopez@email.com</email>
+  </receiver>
+  <date>2025-05-26</date>
+  <body>
+    <paragraph>Querida María,</paragraph>
+    <paragraph>Espero que este mensaje te encuentre bien. Solo quería escribirte para comentarte que he recibido todos los documentos que me enviaste.</paragraph>
+    <paragraph>Quedo atento a cualquier consulta o comentario.</paragraph>
+    <paragraph>Un abrazo,</paragraph>
+  </body>
+  <signature>Juan Pérez</signature>
+</letter>
