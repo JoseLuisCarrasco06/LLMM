@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>NASA APOD API - Ejercicio JSON</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  img { max-width: 100%; height: auto; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<h2>NASA Astronomy Picture of the Day (APOD)</h2>
+
+<div id="explanation"></div>
+<div id="date"></div>
+<div id="url"></div>
+<img id="apodImage" src="" alt="Imagen APOD" />
+
+<script>
+  const apiKey = "DEMO_KEY";
+  const date = "2020-05-01";  // fecha que piden en el ejercicio
+  const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`;
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      const response = JSON.parse(this.responseText);
+
+      // Mostrar explicación
+      document.getElementById("explanation").innerHTML = "<strong>Explanation:</strong> " + response.explanation;
+
+      // Mostrar fecha
+      document.getElementById("date").innerHTML = "<strong>Date:</strong> " + response.date;
+
+      // Mostrar URL
+      document.getElementById("url").innerHTML = `<strong>URL:</strong> <a href="${response.url}" target="_blank">${response.url}</a>`;
+
+      // Mostrar imagen
+      const img = document.getElementById("apodImage");
+      img.src = response.url;
+      img.alt = "NASA APOD - " + response.title;
+    } else if (this.readyState === 4) {
+      // Si falla la petición
+      document.getElementById("explanation").innerHTML = "Error cargando datos de la NASA.";
+    }
+  };
+
+  xhr.open("GET", apiUrl, true);
+  xhr.send();
+</script>
+
+</body>
+</html>
