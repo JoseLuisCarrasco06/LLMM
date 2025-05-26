@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Ejercicio JSON Array</title>
+<style>
+  table { border-collapse: collapse; width: 50%; margin-top: 20px;}
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { background-color: #f2f2f2; }
+</style>
+</head>
+<body>
+
+<h2>Datos JSON desde archivo</h2>
+
+<p id="longitud"></p>
+
+<div id="tabla"></div>
+
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  // Parseamos el JSON
+  const data = JSON.parse(this.responseText);
+
+  // Mostrar la longitud del array
+  document.getElementById("longitud").textContent = "Longitud del array: " + data.length;
+
+  // Crear tabla
+  let tablaHTML = "<table><tr><th>Nombre</th><th>Edad</th><th>Ciudad</th></tr>";
+
+  for(let i = 0; i < data.length; i++) {
+    tablaHTML += "<tr>";
+    tablaHTML += "<td>" + data[i].name + "</td>";
+    tablaHTML += "<td>" + data[i].age + "</td>";
+    tablaHTML += "<td>" + data[i].city + "</td>";
+    tablaHTML += "</tr>";
+  }
+
+  tablaHTML += "</table>";
+
+  // Mostrar tabla
+  document.getElementById("tabla").innerHTML = tablaHTML;
+};
+
+xhttp.open("GET", "json_demo_array.txt", true);
+xhttp.send();
+</script>
+
+</body>
+</html>
