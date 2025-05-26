@@ -1,79 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<title>Información Meteorológica - Huelva</title>
-<style>
-  body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
-  h2 { color: #0077cc; }
-  .info { margin-bottom: 10px; }
-  .section { margin-top: 20px; }
-</style>
+    <meta charset="UTF-8" />
+    <title>Lectura de RSS con AJAX</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .item { border-bottom: 1px solid #ccc; margin-bottom: 10px; padding-bottom: 10px; }
+        .item h3 { margin: 0; }
+        .item p { margin: 5px 0; }
+        .item a { color: blue; text-decoration: none; }
+    </style>
 </head>
 <body>
+    <h1>Últimas noticias RSS</h1>
+    <div id="rssContent">Cargando noticias...</div>
 
-<h2>Información Meteorológica de Huelva</h2>
+    <script>
+        // URL del RSS elegido (en este ejemplo, el RSS de la BBC Mundo)
+        const rssUrl = 'https://feeds.bbci.co.uk/mundo/rss.xml';
 
-<div id="weather">Cargando datos meteorológicos...</div>
+        function loadRSS(url) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xhr.responseText, "application/xml");
+                    mostrarRSS(xmlDoc);
+                } else {
+                    document.getElementById('rssContent').innerText = 'Error al cargar el RSS.';
+                }
+            };
+            xhr.onerror = function() {
+                document.getElementById('rssContent').innerText = 'Error en la solicitud.';
+            }
+            xhr.send();
+        }
 
-<script>
-const xhttp = new XMLHttpRequest();
-xhttp.onload = function() {
-  const xmlDoc = this.responseXML;
-  if (!xmlDoc) {
-    document.getElementById("weather").innerHTML = "Error al cargar el XML.";
-    return;
-  }
+        function mostrarRSS(xml) {
+            const items = xml.getElementsByTagName('item');
+            let html = '';
 
-  // Obtenemos el primer día
-  const dias = xmlDoc.getElementsByTagName("dia");
-  if (dias.length === 0) {
-    document.getElementById("weather").innerHTML = "No hay datos disponibles.";
-    return;
-  }
-  const dia = dias[0];
-  const prediccion = dia.getElementsByTagName("prediccion")[0];
+            for(let i = 0; i < items.length && i < 10; i++) { // Mostrar máximo 10 noticias
+                const title = items[i].getElementsByTagName('title')[0].textContent;
+                const link = items[i].getElementsByTagName('link')[0].textContent;
+                const descriptionNode = items[i].getElementsByTagName('description')[0];
+                const description = descriptionNode ? descriptionNode.textContent : '';
+                const pubDateNode = items[i].getElementsByTagName('pubDate')[0];
+                const pubDate = pubDateNode ? pubDateNode.textContent : '';
 
-  // Temperaturas
-  const tempMax = prediccion.getElementsByTagName("temperatura")[0].getElementsByTagName("maxima")[0].textContent;
-  const tempMin = prediccion.getElementsByTagName("temperatura")[0].getElementsByTagName("minima")[0].textContent;
+                html += `<div class="item">
+                    <h3><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+                    <p><em>${pubDate}</em></p>
+                    <p>${description}</p>
+                </div>`;
+            }
 
-  // Humedad relativa
-  const humedad = prediccion.getElementsByTagName("humedad_relativa")[0];
-  const humMax = humedad.getElementsByTagName("maxima")[0].textContent;
-  const humMin = humedad.getElementsByTagName("minima")[0].textContent;
+            document.getElementById('rssContent').innerHTML = html || 'No se encontraron noticias.';
+        }
 
-  // Estado del cielo horario
-  const estadosCielo = prediccion.getElementsByTagName("estado_cielo");
-  let estadosHTML = "";
-  for (let i = 0; i < estadosCielo.length; i++) {
-    const periodo = estadosCielo[i].getAttribute("periodo");
-    const descripcion = estadosCielo[i].getAttribute("descripcion");
-    estadosHTML += `<li><strong>${periodo}</strong>: ${descripcion}</li>`;
-  }
-
-  // Viento
-  const viento = prediccion.getElementsByTagName("viento")[0];
-  const direccionViento = viento.getElementsByTagName("direccion")[0].textContent;
-  const velocidadViento = viento.getElementsByTagName("velocidad")[0].textContent;
-
-  // Mostrar resultados
-  document.getElementById("weather").innerHTML = `
-    <div class="info"><strong>Temperatura máxima:</strong> ${tempMax} °C</div>
-    <div class="info"><strong>Temperatura mínima:</strong> ${tempMin} °C</div>
-    <div class="info"><strong>Humedad relativa máxima:</strong> ${humMax} %</div>
-    <div class="info"><strong>Humedad relativa mínima:</strong> ${humMin} %</div>
-    <div class="section">
-      <strong>Estado del cielo por tramo horario:</strong>
-      <ul>${estadosHTML}</ul>
-    </div>
-    <div class="info"><strong>Dirección del viento:</strong> ${direccionViento}</div>
-    <div class="info"><strong>Velocidad del viento:</strong> ${velocidadViento} km/h</div>
-  `;
-};
-xhttp.open("GET", "localidad_21041.xml");
-xhttp.send();
-</script>
-
+        loadRSS(rssUrl);
+    </script>
 </body>
 </html>
