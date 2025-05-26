@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <nombre>Huelva</nombre>
+  <provincia>Huelva</provincia>
+  <dia fecha="2023-05-26">
+    <prediccion>
+      <temperatura>
+        <maxima>30</maxima>
+        <minima>17</minima>
+      </temperatura>
+      <humedad_relativa>
+        <maxima>85</maxima>
+        <minima>50</minima>
+      </humedad_relativa>
+      <estado_cielo periodo="00-06" descripcion="Despejado" />
+      <estado_cielo periodo="06-12" descripcion="Poco nuboso" />
+      <estado_cielo periodo="12-18" descripcion="Nuboso" />
+      <estado_cielo periodo="18-24" descripcion="Cubierto" />
+      <viento>
+        <direccion>Oeste</direccion>
+        <velocidad>20</velocidad>
+      </viento>
+    </prediccion>
+  </dia>
+</root>

@@ -1,29 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Información Meteorológica - Huelva</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+  h2 { color: #0077cc; }
+  .info { margin-bottom: 10px; }
+  .section { margin-top: 20px; }
+</style>
+</head>
 <body>
-<h2>Ejemplo con XMLHttpRequest - XML remoto</h2>
-<p id="demo"></p>
+
+<h2>Información Meteorológica de Huelva</h2>
+
+<div id="weather">Cargando datos meteorológicos...</div>
 
 <script>
 const xhttp = new XMLHttpRequest();
 xhttp.onload = function() {
   const xmlDoc = this.responseXML;
-  const cds = xmlDoc.getElementsByTagName("CD");
-  let txt = "";
-
-  for (let i = 0; i < cds.length; i++) {
-    let title = cds[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
-    let artist = cds[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
-    let price = cds[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue;
-
-    txt += `${title} - (${artist}) ${price}€<br>`;
+  if (!xmlDoc) {
+    document.getElementById("weather").innerHTML = "Error al cargar el XML.";
+    return;
   }
 
-  document.getElementById("demo").innerHTML = txt;
-}
+  // Obtenemos el primer día
+  const dias = xmlDoc.getElementsByTagName("dia");
+  if (dias.length === 0) {
+    document.getElementById("weather").innerHTML = "No hay datos disponibles.";
+    return;
+  }
+  const dia = dias[0];
+  const prediccion = dia.getElementsByTagName("prediccion")[0];
 
-xhttp.open("GET", "https://www.w3schools.com/js/cd_catalog.xml");
+  // Temperaturas
+  const tempMax = prediccion.getElementsByTagName("temperatura")[0].getElementsByTagName("maxima")[0].textContent;
+  const tempMin = prediccion.getElementsByTagName("temperatura")[0].getElementsByTagName("minima")[0].textContent;
+
+  // Humedad relativa
+  const humedad = prediccion.getElementsByTagName("humedad_relativa")[0];
+  const humMax = humedad.getElementsByTagName("maxima")[0].textContent;
+  const humMin = humedad.getElementsByTagName("minima")[0].textContent;
+
+  // Estado del cielo horario
+  const estadosCielo = prediccion.getElementsByTagName("estado_cielo");
+  let estadosHTML = "";
+  for (let i = 0; i < estadosCielo.length; i++) {
+    const periodo = estadosCielo[i].getAttribute("periodo");
+    const descripcion = estadosCielo[i].getAttribute("descripcion");
+    estadosHTML += `<li><strong>${periodo}</strong>: ${descripcion}</li>`;
+  }
+
+  // Viento
+  const viento = prediccion.getElementsByTagName("viento")[0];
+  const direccionViento = viento.getElementsByTagName("direccion")[0].textContent;
+  const velocidadViento = viento.getElementsByTagName("velocidad")[0].textContent;
+
+  // Mostrar resultados
+  document.getElementById("weather").innerHTML = `
+    <div class="info"><strong>Temperatura máxima:</strong> ${tempMax} °C</div>
+    <div class="info"><strong>Temperatura mínima:</strong> ${tempMin} °C</div>
+    <div class="info"><strong>Humedad relativa máxima:</strong> ${humMax} %</div>
+    <div class="info"><strong>Humedad relativa mínima:</strong> ${humMin} %</div>
+    <div class="section">
+      <strong>Estado del cielo por tramo horario:</strong>
+      <ul>${estadosHTML}</ul>
+    </div>
+    <div class="info"><strong>Dirección del viento:</strong> ${direccionViento}</div>
+    <div class="info"><strong>Velocidad del viento:</strong> ${velocidadViento} km/h</div>
+  `;
+};
+xhttp.open("GET", "localidad_21041.xml");
 xhttp.send();
 </script>
+
 </body>
 </html>
